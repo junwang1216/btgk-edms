@@ -16,32 +16,33 @@
             <div class="col-md-6">
                 <div class="card mx-4">
                     <div class="card-block p-4">
-                        <h1>Register</h1>
-                        <p class="text-muted">Create your account</p>
+                        <h1>账号注册</h1>
+                        <p class="text-muted">CREATE YOUR ACCOUNT</p>
                         <div class="input-group mb-3">
-                            <span class="input-group-addon"><i class="icon-user"></i>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Username">
+                            <span class="input-group-addon"><i class="icon-user"></i></span>
+                            <input type="text" id="user_account" name="userAccount" class="form-control"
+                                   placeholder="请输入注册账号...">
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-addon">@</span>
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input type="email" id="user_email" name="userEmail" class="form-control"
+                                   placeholder="请输入注册邮箱...">
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-addon"><i class="icon-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <span class="input-group-addon"><i class="icon-lock"></i></span>
+                            <input type="password" id="user_password" name="userPassword" class="form-control"
+                                   placeholder="请输入注册密码...">
                         </div>
 
                         <div class="input-group mb-4">
-                            <span class="input-group-addon"><i class="icon-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" placeholder="Repeat password">
+                            <span class="input-group-addon"><i class="icon-lock"></i></span>
+                            <input type="password"id="user_confirm_password" name="userConfirmPassword" class="form-control"
+                                   placeholder="请输入确认密码...">
                         </div>
 
-                        <button type="button" class="btn btn-block btn-success">Create Account</button>
+                        <button type="button" class="btn btn-block btn-success">注 册</button>
                     </div>
                     <div class="card-footer p-4">
                         <div class="row">

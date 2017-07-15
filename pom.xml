@@ -15,6 +15,7 @@
         <module>edms-web</module>
         <module>edms-h5</module>
         <module>edms-core</module>
+        <module>edms-in</module>
     </modules>
 
     <properties>

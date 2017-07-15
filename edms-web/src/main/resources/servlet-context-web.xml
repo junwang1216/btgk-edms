@@ -48,7 +48,7 @@
         <mvc:interceptor>
             <!-- 如果不配置或/**,将拦截所有的Controller -->
             <mvc:mapping path="/**"/>
-            <beans:bean class="com.web.interceptor.AuthorizationHandlerInterceptor"></beans:bean>
+            <beans:bean class="com.web.interceptor.AuthorizationHandlerInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
