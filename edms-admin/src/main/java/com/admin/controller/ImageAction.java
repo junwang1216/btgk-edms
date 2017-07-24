@@ -1,6 +1,6 @@
 package com.admin.controller;
 
-import com.core.common.util.CustomizedPropertyConfigurer;
+import com.edms.core.common.util.CustomizedPropertyConfigurer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

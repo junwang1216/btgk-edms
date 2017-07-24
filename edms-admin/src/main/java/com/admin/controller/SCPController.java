@@ -1,12 +1,12 @@
 package com.admin.controller;
 
-import com.core.common.annotation.NotProtected;
-import com.core.common.bean.ResponseBean;
-import com.core.common.bean.SCPInputView;
-import com.core.common.exception.MessageException;
-import com.core.common.util.CustomizedPropertyConfigurer;
-import com.core.common.util.JsonUtils;
-import com.core.service.ISCPService;
+import com.edms.core.common.annotation.NotProtected;
+import com.edms.core.common.bean.ResponseBean;
+import com.edms.core.common.bean.SCPInputView;
+import com.edms.core.common.exception.MessageException;
+import com.edms.core.common.util.CustomizedPropertyConfigurer;
+import com.edms.core.common.util.JsonUtils;
+import com.edms.core.service.ISCPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,7 +1,7 @@
 package com.admin.controller;
 
-import com.core.common.annotation.Desc;
-import com.core.common.annotation.NotProtected;
+import com.edms.core.common.annotation.Desc;
+import com.edms.core.common.annotation.NotProtected;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,8 +1,8 @@
 package com.admin.interceptor;
 
-import com.core.common.annotation.NotProtected;
-import com.core.common.constant.IPlatformConstant;
-import com.core.common.util.RequestUtil;
+import com.edms.core.common.annotation.NotProtected;
+import com.edms.core.common.constant.IPlatformConstant;
+import com.edms.core.common.util.RequestUtil;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

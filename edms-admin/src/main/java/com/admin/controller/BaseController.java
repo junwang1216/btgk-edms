@@ -1,6 +1,6 @@
 package com.admin.controller;
 
-import com.core.common.util.JsonUtils;
+import com.edms.core.common.util.JsonUtils;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.web.context.request.RequestContextHolder;

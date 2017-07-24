@@ -18,7 +18,7 @@
 	<!-- <context:component-scan base-package="com.laiqu"/> -->
 	
     <!-- 加载系统配置信息-->
-	<bean id="configBean"  class="com.core.common.util.CustomizedPropertyConfigurer">
+	<bean id="configBean"  class="com.edms.core.common.util.CustomizedPropertyConfigurer">
 	    <property name="locations">
 	    	<list>
 	    		<value>classpath:system-config-web.properties</value>
@@ -49,7 +49,7 @@
 		</property> -->
 		<property name="packagesToScan">  
                  <list>
-					<value>com.core.common.po</value>
+					<value>com.edms.core.common.po</value>
                  </list>
            </property>
 		<property name="hibernateProperties">
@@ -88,7 +88,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut id="transactionServiceMethod" expression="execution(* com.core.service.*.*(..))"/>
+		<aop:pointcut id="transactionServiceMethod" expression="execution(* com.edms.core.service.*.*(..))"/>
 		<aop:advisor pointcut-ref="transactionServiceMethod" advice-ref="transactionAdvice" />
 	</aop:config>
 	
@@ -100,7 +100,7 @@
 	</bean>
 
 	<bean id="baseDao"
-		class="com.core.dao.hibernate.BaseDao">
+		class="com.edms.core.dao.hibernate.BaseDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 </beans>

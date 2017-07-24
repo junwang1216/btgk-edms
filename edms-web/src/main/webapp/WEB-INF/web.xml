@@ -34,7 +34,7 @@
   <!-- version filter -->
   <filter>
     <filter-name>versionFilter</filter-name>
-    <filter-class>com.web.interceptor.ResourceVersionFilter</filter-class>
+    <filter-class>com.edms.web.interceptor.ResourceVersionFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>versionFilter</filter-name>

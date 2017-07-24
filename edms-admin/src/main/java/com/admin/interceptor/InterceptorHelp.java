@@ -1,6 +1,6 @@
 package com.admin.interceptor;
 
-import com.core.common.constant.IPlatformConstant;
+import com.edms.core.common.constant.IPlatformConstant;
 
 import javax.servlet.http.HttpServletRequest;
 
