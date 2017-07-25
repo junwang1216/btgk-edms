@@ -17,14 +17,14 @@ public class PassportController extends BaseController {
     @NotProtected
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String renderPassportLogin() {
-        return "AdminPassport/Login";
+        return "Passport/Login";
     }
 
     @Desc("用户注册")
     @NotProtected
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String renderPassportRegister() {
-        return "AdminPassport/Register";
+        return "Passport/Register";
     }
 
     @Desc("退出登录")

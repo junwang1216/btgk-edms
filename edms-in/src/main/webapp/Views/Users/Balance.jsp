@@ -7,7 +7,7 @@
 
 <layout:override name="<%=Blocks.BLOCK_HEADER_SCRIPTS%>">
     <script async type="text/javascript" src="Content/js/require.js?v=${static_resource_version}"
-            data-main="Content/js/app/admin_users/list.js?v=${static_resource_version}"></script>
+            data-main="Content/js/app/admin_users/balance.js?v=${static_resource_version}"></script>
 </layout:override>
 
 <layout:override name="<%=Blocks.BLOCK_BODY%>">
@@ -17,8 +17,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>用户检索</strong>
-                            <small>Users</small>
+                            <strong>充值记录</strong>
+                            <small>Balance</small>
                         </div>
                         <div class="card-block">
                             <form action="" method="post" class="form-horizontal">
@@ -29,14 +29,28 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-2 form-control-label" for="user_account">用户账户</label>
+                                    <label class="col-md-2 form-control-label" for="user_account">用户账号</label>
                                     <div class="col-md-10">
-                                        <input type="text" id="user_account" name="userAccount" class="form-control" placeholder="请输入用户账户...">
+                                        <input type="text" id="user_account" name="userAccount" class="form-control" placeholder="请输入用户账号...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 form-control-label" for="balance_date">充值时间</label>
+                                    <div class="col-md-10">
+                                        <select class="form-control" id="balance_date" name="balanceDate">
+                                            <option>请选择...</option>
+                                            <option selected>最近一个月</option>
+                                            <option>最近三个月</option>
+                                            <option>最近六个月</option>
+                                        </select>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer text-right">
+                            <button type="reset" class="btn btn-warning">
+                                <i class="fa fa-usd"></i> 充 值
+                            </button>
                             <button type="reset" class="btn btn-danger">
                                 <i class="fa fa-ban"></i> 清 空
                             </button>
@@ -50,9 +64,8 @@
                                 <tr>
                                     <th>用户姓名</th>
                                     <th>用户账户</th>
-                                    <th>余额</th>
-                                    <th>下载量</th>
-                                    <th>访问量</th>
+                                    <th>充值金额</th>
+                                    <th>充值时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,141 +73,181 @@
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 <tr>
                                     <td>张某某</td>
                                     <td>user92519081</td>
                                     <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
+                                </tr>
+                                <tr>
+                                    <td>张某某</td>
+                                    <td>user92519081</td>
+                                    <td>100.00元</td>
+                                    <td>2017-05-01</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -262,10 +315,81 @@
             </div>
             <!--/.row-->
         </div>
+    </div>
 
+    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>我要充值</strong> Recharge
+                        </div>
+                        <div class="card-block">
+                            <form action="" method="post" class="form-horizontal ">
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="hf-email">充值用户</label>
+                                    <div class="col-md-9">
+                                        <input type="email" id="hf-email" name="hf-email" class="form-control" placeholder="请输入账户或者姓名...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-3 form-control-label" for="hf-password">充值金额</label>
+                                    <div class="col-md-9">
+                                        <input type="password" id="hf-password" name="hf-password" class="form-control" placeholder="请输入金额...">
+                                    </div>
+                                </div>
+                                <div class="card card-inverse card-info text-center" style="float: left; width: 45%; margin-right: 10%;">
+                                    <div class="card-header">冲 20 元</div>
+                                    <div class="card-block">
+                                        <blockquote class="card-blockquote">
+                                            <p>冲 20 元送 2 元</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="card card-inverse card-info text-center" style="float: left; width: 45%;">
+                                    <div class="card-header">冲 50 元</div>
+                                    <div class="card-block">
+                                        <blockquote class="card-blockquote">
+                                            <p>冲 50 元送 10 元</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="card card-inverse card-info text-center" style="float: left; width: 45%; margin-right: 10%;">
+                                    <div class="card-header">冲 100 元</div>
+                                    <div class="card-block">
+                                        <blockquote class="card-blockquote">
+                                            <p>冲 100 元送 30 元</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                                <div class="card card-inverse card-info text-center" style="float: left; width: 45%;">
+                                    <div class="card-header">冲 500 元</div>
+                                    <div class="card-block">
+                                        <blockquote class="card-blockquote">
+                                            <p>冲 500 元送 50 元</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">
+                                <i class="fa fa-ban"></i> 关 闭
+                            </button>
+                            <button type="reset" class="btn btn-info">
+                                <i class="fa fa-check"></i> 确 认
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div>
 </layout:override>
 
-<c:import url="../Admin/GeneralLayout.jsp">
+<c:import url="../Shared/GeneralLayout.jsp">
     <c:param name="nav" value="setting"/>
 </c:import>

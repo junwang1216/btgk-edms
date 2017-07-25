@@ -52,6 +52,6 @@
     </div>
 </layout:override>
 
-<c:import url="../Admin/PassportLayout.jsp">
+<c:import url="../Shared/PassportLayout.jsp">
     <c:param name="nav" value="setting"/>
 </c:import>

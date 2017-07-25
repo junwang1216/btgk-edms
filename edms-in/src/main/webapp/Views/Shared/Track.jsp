@@ -3,9 +3,9 @@
 
 <!-- Breadcrumb -->
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">Home</li>
-    <li class="breadcrumb-item"><a href="#">Admin</a></li>
-    <li class="breadcrumb-item active">Dashboard</li>
+    <li class="breadcrumb-item">当前系统</li>
+    <li class="breadcrumb-item"><a href="#">资料管理</a></li>
+    <li class="breadcrumb-item active">资料分类</li>
 
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">

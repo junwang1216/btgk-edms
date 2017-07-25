@@ -17,49 +17,54 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong>资料整理</strong>
-                            <small>Document</small>
+                            <strong>资料上传</strong>
+                            <small>Upload</small>
                         </div>
                         <div class="card-block">
                             <form action="" method="post" class="form-horizontal">
                                 <div class="form-group row">
                                     <label class="col-md-2 form-control-label" for="article_title">资料标题</label>
-                                    <div class="col-md-10">
-                                        <input type="text" id="article_title" name="articleTitle" class="form-control" placeholder="请输入资料标题...">
+                                    <div class="col-md-5">
+                                        <input type="text" id="article_title" name="articleTitle" class="form-control"
+                                               placeholder="请输入资料标题...">
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 form-control-label" for="article_class">资料分类</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-5">
                                         <select id="article_class" name="articleClass" class="form-control">
-                                            <option value="">请选择...</option>
+                                            <option value="">请选择资料分类...</option>
                                             <option value="1">计算机科技类</option>
                                             <option value="2">体育经济类</option>
                                             <option value="3">文史艺术类</option>
+                                            <option value="">添加分类</option>
                                         </select>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <button type="button" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-2 form-control-label" for="article_desc">资料摘要</label>
                                     <div class="col-md-10">
-                                        <textarea id="article_desc" name="articleDesc" rows="5" class="form-control" placeholder="请输入资料摘要..."></textarea>
+                                        <textarea id="article_desc" name="articleDesc" rows="5" class="form-control"
+                                                  placeholder="请输入资料摘要..."></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-md-2 form-control-label" for="article_author">资料作者</label>
-                                    <div class="col-md-4">
-                                        <input type="text" id="article_author" name="articleAuthor" class="form-control" placeholder="请输入资料作者...">
+                                    <div class="col-md-5">
+                                        <input type="text" id="article_author" name="articleAuthor" class="form-control"
+                                               placeholder="请输入资料作者...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" id="article_date" name="articleDate" class="form-control"
+                                               placeholder="请输入发布时间...">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-2 form-control-label" for="article_date">发布时间</label>
-                                    <div class="col-md-4">
-                                        <input type="text" id="article_date" name="articleDate" class="form-control" placeholder="请输入发布时间...">
+                                    <label class="col-md-2 form-control-label">资料价格</label>
+                                    <div class="col-md-5">
+                                        <input type="text" id="article_view_price" name="articleViewPrice"
+                                               class="form-control" placeholder="请输入阅读价格...">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" id="article_download_price" name="articleDownloadPrice"
+                                               class="form-control" placeholder="请输入下载价格...">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -70,9 +75,20 @@
                                         <button type="button" class="btn btn-sm btn-info">经济</button>
                                         <button type="button" class="btn btn-sm btn-info">计算机</button>
                                         <button type="button" class="btn btn-sm btn-info">体育</button>
+                                        <button type="button" class="btn btn-sm btn-info">计算机</button>
+                                        <button type="button" class="btn btn-sm btn-info">体育</button>
+                                        <button type="button" class="btn btn-sm btn-info">经济</button>
+                                        <button type="button" class="btn btn-sm btn-info">计算机</button>
+                                        <button type="button" class="btn btn-sm btn-info">体育</button>
                                         <button type="button" class="btn btn-sm btn-primary">
-                                            <i class="fa fa-plus"></i>
+                                            <i class="fa fa-plus"></i> 添加
                                         </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-2 form-control-label">资料上传</label>
+                                    <div class="col-md-10">
+                                        <input type="file" id="file-input" name="file-input">
                                     </div>
                                 </div>
                             </form>
@@ -103,7 +119,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel1">
-                                                <input type="checkbox" id="tag_sel1" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel0" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -122,7 +138,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel2">
-                                                <input type="checkbox" id="tag_sel2" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel1" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -160,25 +176,6 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel1">
-                                                <input type="checkbox" id="tag_sel1" name="tagId" value="1">
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>计算机科技类资料文献标题</td>
-                                    <td>计算机科技类</td>
-                                    <td>计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容。</td>
-                                    <td>张教授</td>
-                                    <td>
-                                        <span class="badge badge-success">计算机</span>
-                                        <span class="badge badge-success">体育</span>
-                                        <span class="badge badge-success">科技</span>
-                                    </td>
-                                    <td>2017-01-24</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <label for="tag_sel2">
                                                 <input type="checkbox" id="tag_sel2" name="tagId" value="1">
                                             </label>
                                         </div>
@@ -197,8 +194,27 @@
                                 <tr>
                                     <td>
                                         <div class="checkbox">
+                                            <label for="tag_sel2">
+                                                <input type="checkbox" id="tag_sel4" name="tagId" value="1">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>计算机科技类资料文献标题</td>
+                                    <td>计算机科技类</td>
+                                    <td>计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容。</td>
+                                    <td>张教授</td>
+                                    <td>
+                                        <span class="badge badge-success">计算机</span>
+                                        <span class="badge badge-success">体育</span>
+                                        <span class="badge badge-success">科技</span>
+                                    </td>
+                                    <td>2017-01-24</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
                                             <label for="tag_sel3">
-                                                <input type="checkbox" id="tag_sel3" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel5" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -217,7 +233,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel1">
-                                                <input type="checkbox" id="tag_sel1" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel6" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -236,7 +252,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel2">
-                                                <input type="checkbox" id="tag_sel2" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel7" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -255,7 +271,26 @@
                                     <td>
                                         <div class="checkbox">
                                             <label for="tag_sel3">
-                                                <input type="checkbox" id="tag_sel3" name="tagId" value="1">
+                                                <input type="checkbox" id="tag_sel8" name="tagId" value="1">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>计算机科技类资料文献标题</td>
+                                    <td>计算机科技类</td>
+                                    <td>计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容，计算机科技类资料文献内容。</td>
+                                    <td>张教授</td>
+                                    <td>
+                                        <span class="badge badge-success">计算机</span>
+                                        <span class="badge badge-success">体育</span>
+                                        <span class="badge badge-success">科技</span>
+                                    </td>
+                                    <td>2017-01-24</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label for="tag_sel3">
+                                                <input type="checkbox" id="tag_sel9" name="tagId" value="1">
                                             </label>
                                         </div>
                                     </td>
@@ -272,6 +307,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <%@ include file="../Shared/Pagination.jsp" %>
                         </div>
                     </div>
                 </div>
@@ -283,6 +319,6 @@
     </div>
 </layout:override>
 
-<c:import url="../Admin/GeneralLayout.jsp">
+<c:import url="../Shared/GeneralLayout.jsp">
     <c:param name="nav" value="setting"/>
 </c:import>

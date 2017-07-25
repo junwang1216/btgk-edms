@@ -2812,7 +2812,7 @@ define('lang', function () {
 
         /**
          * Does a type of deep copy. Do not give it anything fancy, best
-         * for basic object copies of objects that also work well as
+         * for core object copies of objects that also work well as
          * JSON-serialized things, or has properties pointing to functions.
          * For non-array/object values, just returns the same object.
          * @param  {Object} obj      copy properties from this object
@@ -19505,7 +19505,7 @@ merge(Compressor.prototype, {
                 // Scan variable definitions from right to left.
                 for (var var_defs_index = var_defs.length; --var_defs_index >= 0;) {
 
-                    // Obtain var declaration and var name with basic sanity check.
+                    // Obtain var declaration and var name with core sanity check.
                     var var_decl = var_defs[var_defs_index];
                     if (var_decl.value == null) break;
                     var var_name = var_decl.name.name;
@@ -24682,7 +24682,7 @@ function (esprima, parse, logger, lang) {
                 lineReturn = existingConfigString.indexOf('\r') === -1 ? '\n' : '\r\n',
                 lastReturnIndex = startString.lastIndexOf('\n');
 
-            //Get the basic amount of indent for the require config call.
+            //Get the core amount of indent for the require config call.
             if (lastReturnIndex === -1) {
                 lastReturnIndex = 0;
             }
@@ -26182,7 +26182,7 @@ define('requirePatch', [ 'env!env/file', 'pragma', 'parse', 'lang', 'logger', 'c
             };
 
             //Return the previous context in case it is needed, like for
-            //the basic config object.
+            //the core config object.
             return oldContext;
         };
 
@@ -28017,7 +28017,7 @@ define('build', function (require) {
         layer = require._layer;
         context = layer.context;
 
-        //Put back basic config, use a fresh object for it.
+        //Put back core config, use a fresh object for it.
         if (baseLoaderConfig) {
             require(copyConfig(baseLoaderConfig));
         }
@@ -28030,7 +28030,7 @@ define('build', function (require) {
             include = include.concat(module.include);
         }
 
-        //If there are overrides to basic config, set that up now.;
+        //If there are overrides to core config, set that up now.;
         if (module.override) {
             if (baseLoaderConfig) {
                 override = build.createOverrideConfig(baseLoaderConfig, module.override);

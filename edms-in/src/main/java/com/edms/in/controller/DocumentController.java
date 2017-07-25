@@ -22,7 +22,7 @@ public class DocumentController extends BaseController {
     public String renderDocumentSearch(Model model) {
         model.addAttribute("isLogin", true);
 
-        return "AdminDocument/Class";
+        return "Document/Class";
     }
 
     @Desc("文献列表")
@@ -32,7 +32,7 @@ public class DocumentController extends BaseController {
 
         model.addAttribute("isLogin", true);
 
-        return "AdminDocument/Search";
+        return "Document/Search";
     }
 
     @Desc("文献上传")
@@ -42,7 +42,7 @@ public class DocumentController extends BaseController {
 
         model.addAttribute("isLogin", false);
 
-        return "AdminDocument/Upload";
+        return "Document/Upload";
     }
 
 }

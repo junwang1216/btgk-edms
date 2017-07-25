@@ -17,21 +17,21 @@ public class UsersController extends BaseController {
     @NotProtected
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String renderUsersList() {
-        return "AdminUsers/List";
+        return "Users/List";
     }
 
     @Desc("用户分配")
     @NotProtected
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String renderUsersAdd() {
-        return "AdminUsers/Add";
+        return "Users/Add";
     }
 
     @Desc("用户余额")
     @NotProtected
     @RequestMapping(value = "/balance", method = RequestMethod.GET)
     public String renderUsersBalance() {
-        return "AdminUsers/Balance";
+        return "Users/Balance";
     }
 
 }

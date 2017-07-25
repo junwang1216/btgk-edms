@@ -7,7 +7,7 @@
 
 <layout:override name="<%=Blocks.BLOCK_HEADER_SCRIPTS%>">
     <script async type="text/javascript" src="Content/js/require.js?v=${static_resource_version}"
-            data-main="Content/js/app/admin_document/class.js?v=${static_resource_version}"></script>
+            data-main="Content/js/app/admin_settings/indexer.js?v=${static_resource_version}"></script>
 </layout:override>
 
 <layout:override name="<%=Blocks.BLOCK_BODY%>">
@@ -17,38 +17,21 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <strong>资料分类</strong>
-                            <small>Form</small>
+                            <strong>建立文档索引</strong>
+                            <small>Indexer</small>
                         </div>
                         <div class="card-block">
                             <form action="" method="post" class="form-horizontal ">
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="class_name">分类名称</label>
+                                    <label class="col-md-3 form-control-label" for="indexer_path">索引目录</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="class_name" name="className" class="form-control" placeholder="请输入分类名称...">
+                                        <input type="text" id="indexer_path" name="indexerName" class="form-control" placeholder="请输入索引目录...">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label" for="class_desc">分类描述</label>
+                                    <label class="col-md-3 form-control-label" for="indexer_desc">索引描述</label>
                                     <div class="col-md-9">
-                                        <textarea id="class_desc" name="classDesc" rows="5" class="form-control" placeholder="请输入分类描述.."></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-3 form-control-label">优先查询</label>
-                                    <div class="col-md-9">
-                                        <label class="radio-inline" for="class_priority1">
-                                            <input type="radio" id="class_priority1" name="classPriority" value="1"> 高优先级
-                                        </label>
-                                        <label class="radio-inline" for="class_priority2">
-                                            <input type="radio" id="class_priority2" name="classPriority" value="2" checked> 中优先级
-                                        </label>
-                                        <label class="radio-inline" for="class_priority3">
-                                            <input type="radio" id="class_priority3" name="classPriority" value="3"> 低优先级
-                                        </label>
-                                        <label class="radio-inline" for="class_priority4">
-                                            <input type="radio" id="class_priority4" name="classPriority" value="4"> 锁定查询
-                                        </label>
+                                        <textarea id="indexer_desc" name="indexerDesc" rows="5" class="form-control" placeholder="请输入索引描述.."></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -58,69 +41,12 @@
                                 <i class="fa fa-ban"></i> 清 空
                             </button>
                             <button type="button" class="btn btn-primary">
-                                <i class="fa fa-check"></i> 保 存
+                                <i class="fa fa-check"></i> 开始建立
                             </button>
                         </div>
                         <div class="card-block">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>类型名称</th>
-                                    <th>类型描述</th>
-                                    <th>优先级</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <label for="class_sel1">
-                                                <input type="checkbox" id="class_sel1" name="classId" value="1"> 选择
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>计算机科技类</td>
-                                    <td>类型描述</td>
-                                    <td><span class="badge badge-danger">高优先级</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <label for="class_sel4">
-                                                <input type="checkbox" id="class_sel4" name="classId" value="1"> 选择
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>计算机科技类</td>
-                                    <td>类型描述</td>
-                                    <td><span class="badge badge-success">中优先级</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <label for="class_sel3">
-                                                <input type="checkbox" id="class_sel3" name="classId" value="1"> 选择
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>计算机科技类</td>
-                                    <td>类型描述</td>
-                                    <td><span class="badge badge-warning">低优先级</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="checkbox">
-                                            <label for="class_sel2">
-                                                <input type="checkbox" id="class_sel2" name="classId" value="1"> 选择
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>计算机科技类</td>
-                                    <td>类型描述</td>
-                                    <td><span class="badge badge-default">锁定查询</span></td>
-                                </tr>
-                                </tbody>
+                            <table class="table table-responsive">
+                                <tr><td><p class="text-muted">...</p></td></tr>
                             </table>
                         </div>
                     </div>
@@ -214,6 +140,7 @@
     </div>
 </layout:override>
 
-<c:import url="../Admin/GeneralLayout.jsp">
+<c:import url="../Shared/GeneralLayout.jsp">
     <c:param name="nav" value="setting"/>
+    <c:param name="sub" value="indexer"/>
 </c:import>

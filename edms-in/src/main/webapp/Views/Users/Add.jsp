@@ -138,6 +138,6 @@
     </div>
 </layout:override>
 
-<c:import url="../Admin/GeneralLayout.jsp">
+<c:import url="../Shared/GeneralLayout.jsp">
     <c:param name="nav" value="setting"/>
 </c:import>

@@ -17,7 +17,7 @@ public class DashboardController {
     @NotProtected
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String renderDashboardIndex() {
-        return "AdminDashboard/Index";
+        return "Dashboard/Index";
     }
 
 }
