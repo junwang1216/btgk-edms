@@ -4,6 +4,7 @@ import com.edms.core.common.annotation.Desc;
 import com.edms.core.common.annotation.NotProtected;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -35,6 +36,16 @@ public class DocumentController extends BaseController {
         return "Document/Search";
     }
 
+    @Desc("文献列表")
+    @NotProtected
+    @RequestMapping(value = "/detail/{articleId}", method = RequestMethod.GET)
+    public String renderDocumentDetail(@PathVariable String articleId, Model model) {
+
+        model.addAttribute("isLogin", true);
+
+        return "Document/Detail";
+    }
+
     @Desc("文献上传")
     @NotProtected
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
@@ -43,6 +54,16 @@ public class DocumentController extends BaseController {
         model.addAttribute("isLogin", false);
 
         return "Document/Upload";
+    }
+
+    @Desc("文献编辑")
+    @NotProtected
+    @RequestMapping(value = "/edit/{articleId}", method = RequestMethod.GET)
+    public String renderDocumentEdit(@PathVariable String articleId, Model model) {
+
+        model.addAttribute("isLogin", true);
+
+        return "Document/Edit";
     }
 
 }

@@ -5,6 +5,31 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> <%-- 方法表达式（字符串截取，替换） --%>
 <%@ taglib uri="http://www.sports.com/tags/tag" prefix="layout" %>
 
+<layout:override name="<%=Blocks.BLOCK_HEADER_CSS%>">
+    <style type="text/css">
+        .class-list {}
+        .class-list th .dropdown-toggle {
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        .tag-list {}
+        .tag-list .btn {
+            position: relative;
+            margin: 10px 0 10px 16px;
+        }
+        .tag-list .btn i {
+            position: absolute;
+            right: -9px;
+            top: -9px;
+            width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            line-height: 18px;
+        }
+    </style>
+</layout:override>
+
 <layout:override name="<%=Blocks.BLOCK_HEADER_SCRIPTS%>">
     <script async type="text/javascript" src="Content/js/require.js?v=${static_resource_version}"
             data-main="Content/js/app/admin_document/class.js?v=${static_resource_version}"></script>
@@ -21,11 +46,15 @@
                             <small>Category</small>
                         </div>
                         <div class="card-block">
-                            <form action="" method="post" class="form-horizontal">
+                            <form id="class_form" method="post" class="form-horizontal" novalidate onsubmit="return false;">
+                                <input type="hidden" id="class_id" name="classId" value="">
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="class_name">分类标题</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="class_name" name="className" class="form-control" placeholder="请输入分类标题...">
+                                        <input type="text" id="class_name" name="className" class="form-control" placeholder="请输入分类标题..."
+                                               data-val="true" data-val-required="请输入分类标题"
+                                               data-val-length-max="8" data-val-length-min="2" data-val-length="分类标题必须包含 2~8 个字符。">
+                                        <div data-valmsg-for="className" data-valmsg-replace="true"></div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -35,78 +64,115 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label">分类状态</label>
-                                    <div class="col-md-9">
-                                        <label class="radio-inline" for="class_priority1">
-                                            <input type="radio" id="class_priority1" name="classPriority" value="1">&nbsp;高&nbsp;
-                                        </label>
-                                        <label class="radio-inline" for="class_priority2">
-                                            <input type="radio" id="class_priority2" name="classPriority" value="2" checked>&nbsp;中&nbsp;
-                                        </label>
-                                        <label class="radio-inline" for="class_priority3">
-                                            <input type="radio" id="class_priority3" name="classPriority" value="3">&nbsp;低&nbsp;
-                                        </label>
-                                        <label class="radio-inline" for="class_priority4">
-                                            <input type="radio" id="class_priority4" name="classPriority" value="4">&nbsp;锁定&nbsp;
-                                        </label>
+                                    <div class="offset-3 col-md-9">
+                                        <button id="class_submit" type="button" class="btn btn-primary pull-right">
+                                            <i class="fa fa-check"></i> 保 存
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-right">
-                            <button type="reset" class="btn btn-danger">
-                                <i class="fa fa-ban"></i> 清 空
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-check"></i> 保 存
-                            </button>
-                        </div>
+                        <div class="card-footer text-right"></div>
                         <div class="card-block">
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机科技文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育专利文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆运营文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机科技文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育专利文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆运营管理文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机科技文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育专利文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆管理文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育专利文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                运营管理文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机科技文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育专利文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆运营管理文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机科技文献&nbsp;<i class="fa fa-close"></i>
-                            </button>
+                            <table class="table table-striped table-sm text-center class-list">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">分类编号</th>
+                                    <th class="text-center">分类标题</th>
+                                    <th class="text-center">更新时间</th>
+                                    <th class="text-center">
+                                        <div class="input-group-btn">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">状态
+                                                <span class="caret"></span>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:">Active</a>
+                                                <a class="dropdown-item" href="javascript:">Inactive</a>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <th class="text-center"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr data-id="">
+                                    <td>C001</td>
+                                    <td>
+                                        <a href="javascript:" class="btn btn-link class-title" data-toggle="popover"
+                                           data-trigger="hover" data-placement="top" data-title="国内外体育产业政策"
+                                           data-content="有描述有描述有描述，有描述有描述有描述有描述有描述。">国内外体育产业政策</a>
+                                    </td>
+                                    <td>2017-03-04</td>
+                                    <td><span class="badge badge-danger">Inactive</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary class-active" title="激活分类">
+                                            <i class="fa fa-dot-circle-o"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger class-trash" title="删除分类"
+                                                data-toggle="modal" data-target="#warning_tips">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="">
+                                    <td>C002</td>
+                                    <td>
+                                        <a href="javascript:" class="btn btn-link class-title" data-toggle="popover"
+                                           data-trigger="hover" data-placement="top" data-title="体育产业规划"
+                                           data-content="没有描述">体育产业规划</a>
+                                    </td>
+                                    <td>2017-03-04</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-danger class-disable" title="禁用分类">
+                                            <i class="fa fa-ban"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger class-trash" title="删除分类"
+                                                data-toggle="modal" data-target="#warning_tips">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="">
+                                    <td>C003</td>
+                                    <td>
+                                        <a href="javascript:" class="btn btn-link class-title" data-toggle="popover"
+                                           data-trigger="hover" data-placement="top" data-title="体育产业商务文案"
+                                           data-content="没有描述">体育产业商务文案</a>
+                                    </td>
+                                    <td>2017-03-04</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-danger class-disable" title="禁用分类">
+                                            <i class="fa fa-ban"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger class-trash" title="删除分类"
+                                                data-toggle="modal" data-target="#warning_tips">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="">
+                                    <td>C004</td>
+                                    <td>
+                                        <a href="javascript:" class="btn btn-link class-title" data-toggle="popover"
+                                           data-trigger="hover" data-placement="top" data-title="体育企业案例"
+                                           data-content="没有描述">体育企业案例</a>
+                                    </td>
+                                    <td>2017-03-04</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-danger class-disable" title="禁用分类">
+                                            <i class="fa fa-ban"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-danger class-trash" title="删除分类"
+                                                data-toggle="modal" data-target="#warning_tips">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -117,11 +183,15 @@
                             <small>Tag</small>
                         </div>
                         <div class="card-block">
-                            <form action="" method="post" class="form-horizontal">
+                            <form id="tag_form" method="post" class="form-horizontal" novalidate onsubmit="return false;">
+                                <input type="hidden" id="tag_id" name="tagId" value="">
                                 <div class="form-group row">
                                     <label class="col-md-3 form-control-label" for="tag_name">标签名称</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="tag_name" name="tagName" class="form-control" placeholder="请输入标签名称...">
+                                        <input type="text" id="tag_name" name="tagName" class="form-control" placeholder="请输入标签名称..."
+                                               data-val="true" data-val-required="请输入标签名称"
+                                               data-val-length-max="8" data-val-length-min="2" data-val-length="标签名称必须包含 2~8 个字符。">
+                                        <div data-valmsg-for="tagName" data-valmsg-replace="true"></div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -131,86 +201,65 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-md-3 form-control-label">标签状态</label>
-                                    <div class="col-md-9">
-                                        <label class="radio-inline" for="tag_status1">
-                                            <input type="radio" id="tag_status1" name="tagStatus" value="1" checked> 正常
-                                        </label>
-                                        <label class="radio-inline" for="tag_status2">
-                                            <input type="radio" id="tag_status2" name="tagStatus" value="2"> 锁定
-                                        </label>
+                                    <div class="offset-3 col-md-9">
+                                        <button id="tag_submit" type="button" class="btn btn-primary pull-right">
+                                            <i class="fa fa-check"></i> 保 存
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-right">
-                            <button type="reset" class="btn btn-danger">
-                                <i class="fa fa-ban"></i> 清 空
+                        <div class="card-footer text-right"></div>
+                        <div class="card-block tag-list">
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="运动项目" data-id=""
+                                    data-content="没有描述"> 运动项目
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-check"></i> 保 存
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="项目历史" data-id=""
+                                    data-content="没有描述"> 项目历史
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                        </div>
-                        <div class="card-block">
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="竞赛规则" data-id=""
+                                    data-content="没有描述"> 竞赛规则
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="场地规格" data-id=""
+                                    data-content="没有描述"> 场地规格
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="运动项目" data-id=""
+                                    data-content="没有描述"> 体育产业项目
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="体育产业园区" data-id=""
+                                    data-content="没有描述"> 体育产业园区
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="体育特色小镇" data-id=""
+                                    data-content="没有描述"> 体育特色小镇
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="体育综合体" data-id=""
+                                    data-content="没有描述"> 体育综合体
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="体育产业开发案例" data-id=""
+                                    data-content="没有描述"> 体育产业开发案例
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                计算机&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                体育&nbsp;<i class="fa fa-close"></i>
-                            </button>
-                            <button type="button" class="btn btn-sm btn-danger" style="margin-bottom: 4px;">
-                                场馆&nbsp;<i class="fa fa-close"></i>
+                            <button type="button" class="btn btn-sm btn-secondary tag-title" data-toggle="popover"
+                                    data-trigger="hover" data-placement="top" data-title="产业政策" data-id=""
+                                    data-content="没有描述"> 产业政策
+                                <i class="fa fa-close bg-danger tag-trash" data-toggle="modal" data-target="#warning_tips"></i>
                             </button>
                         </div>
                     </div>

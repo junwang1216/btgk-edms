@@ -22,6 +22,7 @@
     </dependencies>
 
     <build>
+        <finalName>edms-web</finalName>
         <plugins>
             <!-- 编译插件 -->
             <plugin>
@@ -44,6 +45,24 @@
                     <uriEncoding>UTF-8</uriEncoding>
                     <contextReloadable>false</contextReloadable>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <mkdir dir="${basedir}/../deploy"/>
+                                <!-- 拷贝到部署环境需要的路径下 -->
+                                <copy file="${basedir}/target/${build.finalName}.war" toDir="${basedir}/../deploy/" />
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
         </plugins>

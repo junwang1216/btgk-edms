@@ -61,6 +61,23 @@
     <%@ include file="Aside.jsp" %>
 </div>
 
+<div class="modal fade" id="warning_tips" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-danger modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="tips-content">
+                    <span class="fa fa-warning text-danger"></span>&nbsp;
+                    <span class="text"></span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-danger">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- footer -->
 <%@ include file="Footer.jsp" %>
 
