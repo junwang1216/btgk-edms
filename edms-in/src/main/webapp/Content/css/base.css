@@ -4427,6 +4427,7 @@ tbody.collapse.show {
     margin-bottom: 1rem;
     list-style: none;
     background-color: #fff;
+    position: relative;
 }
 
 .breadcrumb::after {

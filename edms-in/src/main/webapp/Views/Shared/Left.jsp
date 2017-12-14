@@ -9,7 +9,7 @@
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link" href="/admin/dashboard/index">
-                    <i class="icon-speedometer"></i> 工作面板
+                    <i class="icon-graph"></i> 工作面板
                 </a>
             </li>
             <li class="nav-item nav-dropdown">
@@ -59,7 +59,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="divider"></li>
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="javascript:;">
                     <i class="icon-settings"></i> 系统设置

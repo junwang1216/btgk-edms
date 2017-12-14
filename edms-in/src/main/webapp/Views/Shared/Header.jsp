@@ -12,10 +12,10 @@
             <a class="nav-link" href="/admin/dashboard/index">工作面板</a>
         </li>
         <li class="nav-item px-3">
-            <a class="nav-link" href="/admin/users/list">用户管理</a>
+            <a class="nav-link" href="/admin/users/list">用户检索</a>
         </li>
         <li class="nav-item px-3">
-            <a class="nav-link" href="/admin/users/search">资料管理</a>
+            <a class="nav-link" href="/admin/users/search">资料检索</a>
         </li>
     </ul>
     <ul class="nav navbar-nav ml-auto">

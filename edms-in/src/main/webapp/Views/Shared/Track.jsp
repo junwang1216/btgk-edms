@@ -6,6 +6,9 @@
     <li class="breadcrumb-item">当前系统</li>
 
     <c:choose>
+        <c:when test="${param.menu == 'dashboard'}">
+            <li class="breadcrumb-item active">工作台</li>
+        </c:when>
         <c:when test="${param.menu == 'document'}">
             <li class="breadcrumb-item">资料管理</li>
         </c:when>
@@ -59,7 +62,7 @@
             <a class="btn btn-secondary" href="#">
                 <i class="icon-speech"></i> &nbsp;在线帮助
             </a>
-            <a class="btn btn-secondary" href="#">
+            <a class="btn btn-secondary" href="/admin/dashboard/index">
                 <i class="icon-graph"></i> &nbsp;工作面板
             </a>
             <a class="btn btn-secondary" href="#">
