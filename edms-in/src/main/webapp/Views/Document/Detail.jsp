@@ -98,5 +98,6 @@
 </layout:override>
 
 <c:import url="../Shared/GeneralLayout.jsp">
-    <c:param name="nav" value="setting"/>
+    <c:param name="menu" value="document"/>
+    <c:param name="subMenu" value="detail"/>
 </c:import>

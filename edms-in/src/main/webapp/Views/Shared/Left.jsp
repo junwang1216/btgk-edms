@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <%-- JSTL表达式（判断，循环，输出） --%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> <%-- 方法表达式（字符串截取，替换） --%>
+<%@ taglib uri="http://www.sports.com/tags/tag" prefix="layout" %>
 
 <div class="sidebar">
     <nav class="sidebar-nav">
@@ -31,24 +34,27 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item nav-dropdown">
+            <li class="nav-item nav-dropdown <c:if test="${param.menu == 'document'}">open</c:if>">
                 <a class="nav-link nav-dropdown-toggle" href="javascript:;">
                     <i class="icon-docs"></i> 资料管理
                 </a>
                 <ul class="nav-dropdown-items">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/document/class">
+                    <li class="nav-item <c:if test="${param.subMenu == 'class'}">open</c:if>">
+                        <a class="nav-link <c:if test="${param.subMenu == 'class'}">active</c:if>"
+                           href="/admin/document/class">
                             <i class="icon-arrow-right"></i> 资料分类
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/document/upload">
+                    <li class="nav-item <c:if test="${param.subMenu == 'upload'}">open</c:if>">
+                        <a class="nav-link <c:if test="${param.subMenu == 'upload'}">active</c:if>"
+                           href="/admin/document/upload">
                             <i class="icon-arrow-right"></i> 资料上传
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/document/search">
-                            <i class="icon-arrow-right"></i> 资料查询
+                    <li class="nav-item <c:if test="${param.subMenu == 'search' || param.subMenu == 'detail' || param.subMenu == 'edit'}">open</c:if>">
+                        <a class="nav-link <c:if test="${param.subMenu == 'search' || param.subMenu == 'detail' || param.subMenu == 'edit'}">active</c:if>"
+                           href="/admin/document/search">
+                            <i class="icon-arrow-right"></i> 资料检索
                         </a>
                     </li>
                 </ul>
