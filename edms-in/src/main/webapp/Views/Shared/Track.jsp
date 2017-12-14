@@ -12,9 +12,9 @@
         <c:when test="${param.menu == 'user'}">
             <li class="breadcrumb-item">用户管理</li>
         </c:when>
-        <c:otherwise>
+        <c:when test="${param.menu == 'setting'}">
             <li class="breadcrumb-item">系统设置</li>
-        </c:otherwise>
+        </c:when>
     </c:choose>
 
     <c:choose>
@@ -35,9 +35,6 @@
         <c:when test="${param.subMenu == 'upload'}">
             <li class="breadcrumb-item active">资料上传</li>
         </c:when>
-        <c:otherwise>
-            <li class="breadcrumb-item active">用户检索</li>
-        </c:otherwise>
     </c:choose>
 
     <c:choose>
@@ -54,9 +51,6 @@
         <c:when test="${param.subMenu == 'balance'}">
             <li class="breadcrumb-item active">用户余额</li>
         </c:when>
-        <c:otherwise>
-            <li class="breadcrumb-item active">用户余额</li>
-        </c:otherwise>
     </c:choose>
 
     <!-- Breadcrumb Menu-->
