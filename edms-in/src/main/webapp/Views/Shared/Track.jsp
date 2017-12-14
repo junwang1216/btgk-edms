@@ -56,6 +56,12 @@
         </c:when>
     </c:choose>
 
+    <c:choose>
+        <c:when test="${param.subMenu == 'admin'}">
+            <li class="breadcrumb-item active">管理员设置</li>
+        </c:when>
+    </c:choose>
+
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">

@@ -65,6 +65,11 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/settings/account">
+                            <i class="icon-arrow-right"></i> 管理员设置
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="icon-arrow-right"></i> 充值渠道管理
                         </a>
