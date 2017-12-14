@@ -11132,14 +11132,14 @@ app-root {
     color: #607d8b;
 }
 
-.nav-tabs .nav-link.active, .nav-tabs .navbar .active.dropdown-toggle, .navbar .nav-tabs .active.dropdown-toggle {
+.nav-tabs .nav-item.active .nav-link, .nav-tabs .navbar .active.dropdown-toggle, .navbar .nav-tabs .active.dropdown-toggle {
     color: #263238;
     background: #fff;
     border-color: #cfd8dc;
     border-bottom-color: #fff;
 }
 
-.nav-tabs .nav-link.active:focus, .nav-tabs .navbar .active.dropdown-toggle:focus, .navbar .nav-tabs .active.dropdown-toggle:focus {
+.nav-tabs .nav-item.active:focus .nav-link, .nav-tabs .navbar .active.dropdown-toggle:focus, .navbar .nav-tabs .active.dropdown-toggle:focus {
     background: #fff;
     border-color: #cfd8dc;
     border-bottom-color: #fff;

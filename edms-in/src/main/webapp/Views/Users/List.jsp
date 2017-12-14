@@ -5,12 +5,69 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> <%-- 方法表达式（字符串截取，替换） --%>
 <%@ taglib uri="http://www.sports.com/tags/tag" prefix="layout" %>
 
+<layout:override name="<%=Blocks.BLOCK_HEADER_CSS%>">
+    <style type="text/css">
+        .user-list th {
+            padding: 0.75rem;
+        }
+        #user_recharge .money-list .btn {
+            width: 6rem;
+            padding: .75rem;
+            margin: .2rem;
+        }
+    </style>
+</layout:override>
+
 <layout:override name="<%=Blocks.BLOCK_HEADER_SCRIPTS%>">
     <script async type="text/javascript" src="Content/js/require.js?v=${static_resource_version}"
             data-main="Content/js/app/admin_users/list.js?v=${static_resource_version}"></script>
 </layout:override>
 
 <layout:override name="<%=Blocks.BLOCK_BODY%>">
+    <div class="modal fade" id="user_recharge" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-primary modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form id="user_recharge_form" method="post" class="form-horizontal" novalidate onsubmit="return false;">
+                        <input type="hidden" id="user_id" name="userId" value="">
+                        <div class="form-group row">
+                            <div class="col-md-12 text-center">
+                                <div class="btn-group money-list" role="group">
+                                    <button type="button" class="btn btn-outline-success">
+                                        <span class="fa fa-jpy"></span> 10 元
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success">
+                                        <span class="fa fa-jpy"></span> 20 元
+                                    </button>
+                                </div>
+                                <div class="btn-group money-list" role="group">
+                                    <button type="button" class="btn btn-outline-success">
+                                        <span class="fa fa-jpy"></span> 50 元
+                                    </button>
+                                    <button type="button" class="btn btn-outline-success">
+                                        <span class="fa fa-jpy"></span> 100 元
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-jpy"></i></span>
+                                    <input type="text" id="user_money" name="userMoney" class="form-control" placeholder="请输入金额...">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取 消</button>
+                    <button type="button" class="btn btn-danger">充 值</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
         <div class="animated fadeIn">
             <div class="row">
@@ -23,237 +80,251 @@
                         <div class="card-block">
                             <form action="" method="post" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label class="col-md-2 form-control-label" for="user_name">用户姓名</label>
-                                    <div class="col-md-10">
-                                        <input type="text" id="user_name" name="userName" class="form-control" placeholder="请输入用户姓名...">
+                                    <div class="col-md-2">
+                                        <select id="user_type" name="userType" class="form-control">
+                                            <option value="">请选择检索项...</option>
+                                            <option value="">账户名</option>
+                                            <option value="">真实姓名</option>
+                                            <option value="">手机号码</option>
+                                            <option value="">身份证号</option>
+                                        </select>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-2 form-control-label" for="user_account">用户账户</label>
-                                    <div class="col-md-10">
-                                        <input type="text" id="user_account" name="userAccount" class="form-control" placeholder="请输入用户账户...">
+                                    <div class="col-md-2">
+                                        <select id="user_status" name="userStatus" class="form-control">
+                                            <option value="">请选择状态...</option>
+                                            <option value="">正常</option>
+                                            <option value="">已锁定</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" id="user_keywords" name="userKeywords" class="form-control" placeholder="请输入关键字...">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-primary pull-right">
+                                            <i class="fa fa-search"></i> 检 索
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-right">
-                            <button type="reset" class="btn btn-danger">
-                                <i class="fa fa-ban"></i> 清 空
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-search"></i> 检 索
-                            </button>
-                        </div>
+                        <div class="card-footer text-right"></div>
                         <div class="card-block">
-                            <table class="table table-bordered">
+                            <table class="table table-striped table-sm user-list">
                                 <thead>
                                 <tr>
-                                    <th>用户姓名</th>
-                                    <th>用户账户</th>
-                                    <th>余额</th>
-                                    <th>下载量</th>
-                                    <th>访问量</th>
+                                    <th>账户名</th>
+                                    <th>真实姓名</th>
+                                    <th>手机号码</th>
+                                    <th>身份证号</th>
+                                    <th>用户状态</th>
+                                    <th>用户余额</th>
+                                    <th>下载频次</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>张某某</td>
+                                <tr data-id="">
                                     <td>user92519081</td>
+                                    <td>张某某</td>
+                                    <td>158****3167</td>
+                                    <td>370782********1421</td>
+                                    <td><span class="badge badge-success">正常</span></td>
                                     <td>100.00元</td>
                                     <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
-                                </tr>
-                                <tr>
-                                    <td>张某某</td>
-                                    <td>user92519081</td>
-                                    <td>100.00元</td>
-                                    <td>1000次</td>
-                                    <td>13160次</td>
+                                    <td>
+                                        <a href="#" class="btn btn-sm btn-primary user-refresh" title="重新编辑">
+                                            <i class="fa fa-refresh"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-danger user-recharge" title="充值金额"
+                                           data-target="#user_recharge" data-toggle="modal">
+                                            <i class="fa fa-money"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">首页</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">上一页</a>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">...</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">28</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">29</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">下一页</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">末页</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-2">
-                                    <select class="form-control">
-                                        <option>每页10条</option>
-                                        <option>每页20条</option>
-                                        <option selected>每页30条</option>
-                                        <option>每页50条</option>
-                                        <option>每页100条</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="controls">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">第</span>
-                                            <input class="form-control" size="16" type="text">
-                                            <span class="input-group-addon">页</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div>
+                                <%@ include file="../Shared/Pagination.jsp" %>
                             </div>
                         </div>
                     </div>
@@ -267,5 +338,6 @@
 </layout:override>
 
 <c:import url="../Shared/GeneralLayout.jsp">
-    <c:param name="nav" value="setting"/>
+    <c:param name="menu" value="user"/>
+    <c:param name="subMenu" value="search"/>
 </c:import>

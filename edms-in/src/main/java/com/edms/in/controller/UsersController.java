@@ -20,6 +20,13 @@ public class UsersController extends BaseController {
         return "Users/List";
     }
 
+    @Desc("用户编辑")
+    @NotProtected
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    public String renderUsersEdit() {
+        return "Users/Edit";
+    }
+
     @Desc("用户分配")
     @NotProtected
     @RequestMapping(value = "/add", method = RequestMethod.GET)

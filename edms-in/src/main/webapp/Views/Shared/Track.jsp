@@ -4,14 +4,19 @@
 <!-- Breadcrumb -->
 <ol class="breadcrumb">
     <li class="breadcrumb-item">当前系统</li>
+
     <c:choose>
         <c:when test="${param.menu == 'document'}">
             <li class="breadcrumb-item">资料管理</li>
         </c:when>
-        <c:otherwise>
+        <c:when test="${param.menu == 'user'}">
             <li class="breadcrumb-item">用户管理</li>
+        </c:when>
+        <c:otherwise>
+            <li class="breadcrumb-item">系统设置</li>
         </c:otherwise>
     </c:choose>
+
     <c:choose>
         <c:when test="${param.subMenu == 'search'}">
             <li class="breadcrumb-item active">资料检索</li>
@@ -31,7 +36,26 @@
             <li class="breadcrumb-item active">资料上传</li>
         </c:when>
         <c:otherwise>
-            <li class="breadcrumb-item">用户检索</li>
+            <li class="breadcrumb-item active">用户检索</li>
+        </c:otherwise>
+    </c:choose>
+
+    <c:choose>
+        <c:when test="${param.subMenu == 'search'}">
+            <li class="breadcrumb-item active">用户检索</li>
+        </c:when>
+        <c:when test="${param.subMenu == 'edit'}">
+            <li class="breadcrumb-item"><a href="/admin/user/list">用户检索</a></li>
+            <li class="breadcrumb-item active">用户编辑</li>
+        </c:when>
+        <c:when test="${param.subMenu == 'add'}">
+            <li class="breadcrumb-item active">用户添加</li>
+        </c:when>
+        <c:when test="${param.subMenu == 'balance'}">
+            <li class="breadcrumb-item active">用户余额</li>
+        </c:when>
+        <c:otherwise>
+            <li class="breadcrumb-item active">用户余额</li>
         </c:otherwise>
     </c:choose>
 

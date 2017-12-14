@@ -28,10 +28,11 @@ public class PassportController extends BaseController {
     }
 
     @Desc("退出登录")
+    @NotProtected
     @RequestMapping("/logout")
-    public String logout() {
+    public String redirectLogout() {
         super.getRequest().getSession().invalidate();
-        return redirect("/admin/passport/login");
+        return "redirect:/admin/passport/login";
     }
 
 }
