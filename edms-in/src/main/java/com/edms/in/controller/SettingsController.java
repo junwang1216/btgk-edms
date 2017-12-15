@@ -34,4 +34,11 @@ public class SettingsController extends BaseController {
         return "Settings/Log";
     }
 
+    @Desc("数据库备份")
+    @NotProtected
+    @RequestMapping(value = "/database", method = RequestMethod.GET)
+    public String renderSettingsDatabase() {
+        return "Settings/Database";
+    }
+
 }

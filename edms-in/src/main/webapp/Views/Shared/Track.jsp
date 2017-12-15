@@ -63,6 +63,9 @@
         <c:when test="${param.subMenu == 'admin'}">
             <li class="breadcrumb-item active">管理员设置</li>
         </c:when>
+        <c:when test="${param.subMenu == 'database'}">
+            <li class="breadcrumb-item active">数据库备份</li>
+        </c:when>
         <c:when test="${param.subMenu == 'log'}">
             <li class="breadcrumb-item active">系统日志</li>
         </c:when>
