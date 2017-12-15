@@ -13,11 +13,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/admin/settings")
 public class SettingsController extends BaseController {
 
+    @Desc("基础设置")
+    @NotProtected
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public String renderSettingsInfo() {
+        return "Settings/Info";
+    }
+
     @Desc("管理员设置")
     @NotProtected
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String renderSettingsAdmin() {
         return "Settings/Admin";
+    }
+
+    @Desc("系统日志")
+    @NotProtected
+    @RequestMapping(value = "/log", method = RequestMethod.GET)
+    public String renderSettingsLog() {
+        return "Settings/Log";
     }
 
 }

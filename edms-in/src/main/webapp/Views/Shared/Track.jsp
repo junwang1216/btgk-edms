@@ -57,8 +57,14 @@
     </c:choose>
 
     <c:choose>
+        <c:when test="${param.subMenu == 'info'}">
+            <li class="breadcrumb-item active">基础设置</li>
+        </c:when>
         <c:when test="${param.subMenu == 'admin'}">
             <li class="breadcrumb-item active">管理员设置</li>
+        </c:when>
+        <c:when test="${param.subMenu == 'log'}">
+            <li class="breadcrumb-item active">系统日志</li>
         </c:when>
     </c:choose>
 

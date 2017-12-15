@@ -65,6 +65,11 @@
                 </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/settings/info">
+                            <i class="icon-arrow-right"></i> 基础设置
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin/settings/account">
                             <i class="icon-arrow-right"></i> 管理员设置
                         </a>
@@ -85,8 +90,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="icon-arrow-right"></i> 系统操作日志
+                        <a class="nav-link" href="/admin/settings/log">
+                            <i class="icon-arrow-right"></i> 系统日志
                         </a>
                     </li>
                 </ul>
